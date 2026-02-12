@@ -1,0 +1,6 @@
+bin/
+bin-int/
+.vscode/
+Makefile
+engine/Makefile
+sandbox/Makefile
