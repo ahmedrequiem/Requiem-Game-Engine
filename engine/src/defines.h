@@ -37,8 +37,8 @@ static_assert(sizeof(f32) == 4, "Expected f32 to be 4 bytes.");
 static_assert(sizeof(f64) == 8, "Expected f64 to be 8 bytes.");
 
 
-#define TRUE 1
-#define FALSE 0
+#define true 1
+#define false 0
 
 #ifdef RQ_EXPORT
   #define RQ_API __declspec(dllexport)

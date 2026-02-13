@@ -15,12 +15,12 @@ project "engine"
 
   files { "engine/src/**.c", "engine/src/**.h" }
 
-  includedirs { "$(VULKAN_SDK)/Include", "engine/src" }
-  libdirs { "$(VULKAN_SDK)/Lib" }
+  includedirs { "$(VULKAN_SDK)/Include", "engine/src", "vendor/glfw/include" }
+  libdirs { "$(VULKAN_SDK)/Lib", "vendor/glfw" }
 
-  defines { "RQ_EXPORT" }
+  defines { "RQ_EXPORT", "GLFW_INCLUDE_VULKAN" }
 
-  links { "vulkan-1" }
+  links { "vulkan-1", "glfw3" }
 
   filter { "system:windows" }
     cdialect "C17"
@@ -30,13 +30,13 @@ project "engine"
 
   filter { "configurations:Debug" }
     symbols "On"
-    defines { "RQ_DEBUG" }
+    defines { "RQ_BUILD_DEBUG" }
   filter { "configurations:Release" }
     optimize "On"
-    defines { "RQ_RELEASE" }
+    defines { "RQ_BUILD_RELEASE" }
   filter { "configurations:Dist" }
     optimize "On"
-    defines { "RQ_DIST" }
+    defines { "RQ_BUILD_DIST" }
 
 project "sandbox"
   location "sandbox"
@@ -61,10 +61,10 @@ project "sandbox"
 
   filter { "configurations:Debug" }
     symbols "On"
-    defines { "RQ_DEBUG" }
+    defines { "RQ_BUILD_DEBUG" }
   filter { "configurations:Release" }
     optimize "On"
-    defines { "RQ_RELEASE" }
+    defines { "RQ_BUILD_RELEASE" }
   filter { "configurations:Dist" }
     optimize "On"
-    defines { "RQ_DIST" }
+    defines { "RQ_BUILD_DIST" }

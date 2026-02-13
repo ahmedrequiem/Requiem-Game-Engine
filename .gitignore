@@ -4,3 +4,4 @@ bin-int/
 Makefile
 engine/Makefile
 sandbox/Makefile
+vendor/

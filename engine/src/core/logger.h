@@ -18,34 +18,34 @@ typedef enum {
 
 bool8 logger_init();
 
-void log_output(log_level level, const char* message, const char* file_name, const char* function_name, int line_number, ...);
+RQ_API void log_output(log_level level, const char* message, const char* file_name, const char* function_name, int line_number, ...);
 
 void logger_shutdown();
 
-#define RQFATAL(msg, ...) log_output(log_level::LOG_LEVEL_FATAL, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define RQFATAL(msg, ...) log_output(LOG_LEVEL_FATAL, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 
-#define RQERROR(msg, ...) log_output(log_level::LOG_LEVEL_ERROR, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+#define RQERROR(msg, ...) log_output(LOG_LEVEL_ERROR, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 
 #if LOG_WARN_ENABLED == 1
-  #define RQWARN(msg, ...) log_output(log_level::LOG_LEVEL_WARN, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+  #define RQWARN(msg, ...) log_output(LOG_LEVEL_WARN, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
   #define RQWARN(msg, ...) 
 #endif
 
 #if LOG_INFO_ENABLED == 1
-  #define RQINFO(msg, ...) log_output(log_level::LOG_LEVEL_INFO, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+  #define RQINFO(msg, ...) log_output(LOG_LEVEL_INFO, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
   #define RQINFO(msg, ...) 
 #endif
 
 #if LOG_DEBUG_ENABLED == 1
-  #define RQDEBUG(msg, ...) log_output(log_level::LOG_LEVEL_DEBUG, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+  #define RQDEBUG(msg, ...) log_output(LOG_LEVEL_DEBUG, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
   #define RQDEBUG(msg, ...)
 #endif
 
 #if LOG_TRACE_ENABLED == 1
-  #define RQTRACE(msg, ...) log_output(log_level::LOG_LEVEL_TRACE, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
+  #define RQTRACE(msg, ...) log_output(LOG_LEVEL_TRACE, msg, __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__);
 #else
   #define RQTRACE(msg, ...)
 #endif
